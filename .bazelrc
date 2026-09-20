@@ -1,0 +1,34 @@
+build --repo_env=CC=clang-23
+build --action_env=CC=clang-23
+build --linkopt=-fuse-ld=lld-23
+build --cxxopt='-std=c++26'
+build --cxxopt=-fcolor-diagnostics
+
+common --experimental_cpp_modules
+common --repo_env=BAZEL_DETECT_STD_MODULE=1
+build --features=cpp_modules
+build --features=std_module
+build --repo_env=BAZEL_LINKLIBS=-lc++:-lm
+build --repo_env=BAZEL_CXXOPTS=-std=c++26:-stdlib=libc++
+build --linkopt=-stdlib=libc++
+
+build --cpu=local
+build --cxxopt='-march=native'
+build --cxxopt='-Wall' --cxxopt='-Werror' --cxxopt='-Wpedantic' --cxxopt='-Wno-unused-parameter' --cxxopt='-Wno-missing-braces' --cxxopt='-Wno-unused-variable' --cxxopt='-Wno-unused-but-set-variable' --cxxopt='-Wno-unused-function' --cxxopt='-Wno-unused-private-field' --cxxopt='-Wno-switch' --cxxopt='-Wno-language-extension-token'
+
+# build:rel --copt=-Rpass=.* --copt=-Rpass-missed=.* --copt=-Rpass-analysis=.*
+build:rel --copt=-O3 --copt=-ffast-math --copt=-flto --linkopt=-flto
+build:rel --strip=always
+
+build:rel_symbols --config=dbg --config=opt
+build:rel_symbols --strip=never
+build:rel_symbols --copt=-g
+
+build:dbg --copt=-g --copt=-O0
+build:dbg --strip=never
+build:dbg --copt=-fno-omit-frame-pointer
+build:dbg --compilation_mode=dbg
+build:dbg --copt=-fdebug-prefix-map=/proc/self/cwd=. # idk man
+build:dbg --copt=-D_GLIBCXX_ASSERTIONS
+build:dbg --copt=-D_GLIBCXX_DEBUG
+build:dbg --copt=-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_DEBUG

@@ -1,0 +1,7 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+
+cc_binary(
+    name = "on3tama",
+    srcs = glob(["**/*.cpp"]) + glob(["**/*.h"], allow_empty = True) + glob(["**/*.hpp"], allow_empty = True),
+    features = ["cpp_modules"],
+)
