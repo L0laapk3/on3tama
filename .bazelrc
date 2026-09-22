@@ -11,6 +11,7 @@ build --features=std_module
 build --repo_env=BAZEL_LINKLIBS=-lc++:-lm
 build --repo_env=BAZEL_CXXOPTS=-std=c++26:-stdlib=libc++
 build --linkopt=-stdlib=libc++
+build --strategy=CppCompile=standalone # Something is broken in the bazel sandbox with cpp modules, i cant be fucked
 
 build --cpu=local
 build --cxxopt='-march=native'
@@ -28,7 +29,8 @@ build:dbg --copt=-g --copt=-O0
 build:dbg --strip=never
 build:dbg --copt=-fno-omit-frame-pointer
 build:dbg --compilation_mode=dbg
-build:dbg --copt=-fdebug-prefix-map=/proc/self/cwd=. # idk man
+build:dbg --copt=-fsanitize=address,undefined
+build:dbg --linkopt=-fsanitize=address,undefined
 build:dbg --copt=-D_GLIBCXX_ASSERTIONS
 build:dbg --copt=-D_GLIBCXX_DEBUG
 build:dbg --copt=-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_DEBUG

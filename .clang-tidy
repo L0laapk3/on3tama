@@ -1,0 +1,11 @@
+Checks: >
+  -*,
+  modernize*,
+  readability*,
+  -readability-identifier-length,
+  performance*,
+  misc*,
+  bugprone*,
+  cppcoreguidelines*,
+  -*-magic-numbers,
+  clang-diagnostic-*
