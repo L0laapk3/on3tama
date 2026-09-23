@@ -9,7 +9,7 @@
 			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
 			"event": "onFileCreate",
 			"isAsync": false,
-			"cmd": "cd ${workspaceRoot} && bazel run //:compdb"
+			"cmd": "cd ${workspaceRoot} && bazel build --keep_going //...; bazel run //:compdb"
 		},
 		{
 			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
@@ -20,7 +20,7 @@
 			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
 			"event": "onFileDelete",
 			"isAsync": false,
-			"cmd": "cd ${workspaceRoot} && bazel run //:compdb"
+			"cmd": "cd ${workspaceRoot} && bazel build --keep_going //...; bazel run //:compdb"
 		},
 		{
 			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
@@ -31,7 +31,7 @@
 			"match": "(\\.bazelrc|\\.clang-tidy)$",
 			"event": "onFileChange",
 			"isAsync": false,
-			"cmd": "cd ${workspaceRoot} && bazel run //:compdb"
+			"cmd": "cd ${workspaceRoot} && bazel build --keep_going //...; bazel run //:compdb"
 		},
 		{
 			"match": "(\\.bazelrc|\\.clang-tidy)$",

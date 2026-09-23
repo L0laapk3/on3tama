@@ -55,27 +55,3 @@ export struct Move {
 		};
 	};
 };
-
-
-
-
-
-
-
-template <bool player, typename Callable>
-void Board::movegen(Game& game, Callable&& cb) const {
-
-	const auto& moveList = game.cards->moveBoards[CARDS_HAND[player][cardI]];
-
-
-
-	U32 sourceBits = p[player];
-	for (int i = 0; i < 5; i++) {
-		U32 sourcePiece = sourceBits & -sourceBits;
-		sourceBits &= sourceBits - 1;
-		int fromBit = std::countr_zero(sourcePiece);
-		auto& landBitCards = moveList[ttMove.fromBitFull].flip[player].cards;
-		U32 landBits = landBitCards[0] | landBitCards[1];
-
-	}
-}

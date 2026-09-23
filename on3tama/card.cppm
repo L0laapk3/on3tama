@@ -227,6 +227,4 @@ export struct CardsInfo {
 
 
 
-
-
 void print(const MoveBoard& moves);
