@@ -1,5 +1,31 @@
 {
 	"clangd.arguments": [
 		"--experimental-modules-support"
+	],
+	"filewatcher.autoClearConsole": true,
+	"filewatcher.isSyncRunEvents": true,
+	"filewatcher.commands": [
+		{
+			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/]",
+			"event": "onFolderChange",
+			"isAsync": false,
+			"cmd": "cd ${workspaceRoot} && bazel run //:compdb 2>&1"
+		},
+		{
+			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/]",
+			"event": "onFolderChange",
+			"vscodeTask": "clangd.restart"
+		},
+		{
+			"match": "(\\.bazelrc|\\.clang-tidy)$",
+			"event": "onFileChange",
+			"isAsync": false,
+			"cmd": "cd ${workspaceRoot} && bazel run //:compdb 2>&1"
+		},
+		{
+			"match": "(\\.bazelrc|\\.clang-tidy)$",
+			"event": "onFileChange",
+			"vscodeTask": "clangd.restart"
+		}
 	]
 }

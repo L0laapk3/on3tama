@@ -1,16 +1,9 @@
-import foo;
+import board;
 import std;
 
 
 auto main() -> int {
-	foo f;
-	f.helloworld();
-
-	for (int depth = 1; depth < 8; depth++) {
-
-	}
-
-	std::unreachable();
+	auto b = STARTING_BOARD;
 
 	return 0;
 }

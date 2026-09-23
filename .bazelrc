@@ -11,11 +11,10 @@ build --features=std_module
 build --repo_env=BAZEL_LINKLIBS=-lc++:-lm
 build --repo_env=BAZEL_CXXOPTS=-std=c++26:-stdlib=libc++
 build --linkopt=-stdlib=libc++
-build --strategy=CppCompile=standalone # Something is broken in the bazel sandbox with cpp modules, i cant be fucked
 
 build --cpu=local
 build --cxxopt='-march=native'
-build --cxxopt='-Wall' --cxxopt='-Werror' --cxxopt='-Wpedantic' --cxxopt='-Wno-unused-parameter' --cxxopt='-Wno-missing-braces' --cxxopt='-Wno-unused-variable' --cxxopt='-Wno-unused-but-set-variable' --cxxopt='-Wno-unused-function' --cxxopt='-Wno-unused-private-field' --cxxopt='-Wno-switch' --cxxopt='-Wno-language-extension-token'
+build --cxxopt='-Wall' --cxxopt='-Werror' --cxxopt='-Wpedantic' --cxxopt='-Wno-unused-parameter' --cxxopt='-Wno-missing-braces' --cxxopt='-Wno-unused-variable' --cxxopt='-Wno-unused-but-set-variable' --cxxopt='-Wno-unused-function' --cxxopt='-Wno-unused-private-field' --cxxopt='-Wno-switch' --cxxopt='-Wno-language-extension-token' --cxxopt='-Wgnu-anonymous-struct'
 
 # build:rel --copt=-Rpass=.* --copt=-Rpass-missed=.* --copt=-Rpass-analysis=.*
 build:rel --copt=-O3 --copt=-ffast-math --copt=-flto --linkopt=-flto

@@ -1,11 +1,15 @@
 Checks: >
   -*,
   modernize*,
+  -modernize-use-designated-initializers,
   readability*,
   -readability-identifier-length,
+  -readability-trailing-comma,
   performance*,
   misc*,
   bugprone*,
   cppcoreguidelines*,
+  -cppcoreguidelines-pro-bounds-avoid-unchecked-container-access,
+  -cppcoreguidelines-use-enum-class,
   -*-magic-numbers,
   clang-diagnostic-*
