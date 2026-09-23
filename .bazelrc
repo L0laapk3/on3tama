@@ -14,7 +14,20 @@ build --linkopt=-stdlib=libc++
 
 build --cpu=local
 build --cxxopt='-march=native'
-build --cxxopt='-Wall' --cxxopt='-Werror' --cxxopt='-Wpedantic' --cxxopt='-Wno-unused-parameter' --cxxopt='-Wno-missing-braces' --cxxopt='-Wno-unused-variable' --cxxopt='-Wno-unused-but-set-variable' --cxxopt='-Wno-unused-function' --cxxopt='-Wno-unused-private-field' --cxxopt='-Wno-switch' --cxxopt='-Wno-language-extension-token' --cxxopt='-Wgnu-anonymous-struct'
+
+build --cxxopt='-Wall'
+build --cxxopt='-Werror'
+build --cxxopt='-Wpedantic'
+build --cxxopt='-Wno-unused-parameter'
+build --cxxopt='-Wno-missing-braces'
+build --cxxopt='-Wno-unused-variable'
+build --cxxopt='-Wno-unused-but-set-variable'
+build --cxxopt='-Wno-unused-function'
+build --cxxopt='-Wno-unused-private-field'
+build --cxxopt='-Wno-switch'
+build --cxxopt='-Wno-language-extension-token'
+build --cxxopt='-Wno-gnu-anonymous-struct'
+build --cxxopt='-Wno-nested-anon-types'
 
 # build:rel --copt=-Rpass=.* --copt=-Rpass-missed=.* --copt=-Rpass-analysis=.*
 build:rel --copt=-O3 --copt=-ffast-math --copt=-flto --linkopt=-flto

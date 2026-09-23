@@ -2,6 +2,7 @@ export module board;
 import std;
 import types;
 import card;
+import game;
 
 
 
@@ -62,7 +63,12 @@ export struct Move {
 
 
 template <bool player, typename Callable>
-void Board::movegen(Callable&& cb) const {
+void Board::movegen(Game& game, Callable&& cb) const {
+
+	const auto& moveList = game.cards->moveBoards[CARDS_HAND[player][cardI]];
+
+
+
 	U32 sourceBits = p[player];
 	for (int i = 0; i < 5; i++) {
 		U32 sourcePiece = sourceBits & -sourceBits;

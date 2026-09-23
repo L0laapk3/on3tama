@@ -6,21 +6,32 @@
 	"filewatcher.isSyncRunEvents": true,
 	"filewatcher.commands": [
 		{
-			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/]",
-			"event": "onFolderChange",
+			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
+			"event": "onFileCreate",
 			"isAsync": false,
-			"cmd": "cd ${workspaceRoot} && bazel run //:compdb 2>&1"
+			"cmd": "cd ${workspaceRoot} && bazel run //:compdb"
 		},
 		{
-			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/]",
-			"event": "onFolderChange",
+			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
+			"event": "onFileCreate",
+			"vscodeTask": "clangd.restart"
+		},
+		{
+			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
+			"event": "onFileDelete",
+			"isAsync": false,
+			"cmd": "cd ${workspaceRoot} && bazel run //:compdb"
+		},
+		{
+			"match": "[\\\\/]on3tama[\\\\/]on3tama[\\\\/].*\\.cppm$",
+			"event": "onFileDelete",
 			"vscodeTask": "clangd.restart"
 		},
 		{
 			"match": "(\\.bazelrc|\\.clang-tidy)$",
 			"event": "onFileChange",
 			"isAsync": false,
-			"cmd": "cd ${workspaceRoot} && bazel run //:compdb 2>&1"
+			"cmd": "cd ${workspaceRoot} && bazel run //:compdb"
 		},
 		{
 			"match": "(\\.bazelrc|\\.clang-tidy)$",

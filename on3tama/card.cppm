@@ -195,7 +195,7 @@ constexpr auto generateMoveBoardSet(const CardSet& cards) {
     return moveBoards;
 }
 
-constexpr auto CARDS_HAND = [](){
+export constexpr auto CARDS_HAND = [](){
 	std::array<std::array<U8, 32>, 2> cardsHand{ (U8)-1 };
 	for (int player = 0; player < 2; player++) {
 		int cardI = 0;
@@ -213,7 +213,7 @@ constexpr auto CARDS_HAND = [](){
 }();
 
 
-struct CardsInfo {
+export struct CardsInfo {
 	MoveBoardSet moveBoards;
 	CardSet cards;
 
@@ -226,8 +226,6 @@ struct CardsInfo {
 };
 
 
-
-CardsInfo randomDeck();
 
 
 
