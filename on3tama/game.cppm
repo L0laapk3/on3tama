@@ -23,5 +23,5 @@ public:
 
 
 	template <bool player>
-	SearchResult search(U8 depth, U64 alpha, U64 beta);
+	auto search(Depth depth, Score alpha, Score beta) -> SearchResult;
 };

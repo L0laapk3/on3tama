@@ -6,10 +6,10 @@ import :types;
 import :board;
 
 
-void Board::checkValid(const CardsInfo& cards, bool player, bool isWon) const {
+auto Board::checkValid(const CardsInfo& cards, bool player, bool isWon) const -> void {
 	auto test = [&](bool result) {
 		if (!result) {
-			std::cout << "Invalid board!" << std::endl;
+			std::cout << "Invalid board!\n";
 			print(cards);
 			assert(false);
 			std::exit(1);
@@ -39,20 +39,20 @@ void Board::checkValid(const CardsInfo& cards, bool player, bool isWon) const {
 	// test(tmpBoard.hash == hash);
 }
 
-void Board::assertValid(const CardsInfo& cards, bool player, bool isWon) const {
+auto Board::assertValid(const CardsInfo& cards, bool player, bool isWon) const -> void {
 #ifndef NDEBUG
 	checkValid(cards, player, isWon);
 #endif
 }
 
-export std::string cardsShortName(Card card, int length) {
+export auto cardsShortName(Card card, int length) -> std::string {
 	std::string res = "";
 	for (U32 i = 0; i < length; i++)
 		res += card.name.size() > i ? card.name[i] : ' ';
 	return res;
 }
 
-std::string Board::toString(const CardsInfo& cards, std::vector<Board> boards, std::vector<char> turnIndicators) {
+auto Board::toString(const CardsInfo& cards, const std::vector<Board>& boards, std::vector<char> turnIndicators) -> std::string {
 	std::string outString{};
 	constexpr int BOARDS_PER_LINE = 8;
 
@@ -95,27 +95,27 @@ std::string Board::toString(const CardsInfo& cards, std::vector<Board> boards, s
 	outString += "\n";
 	return outString;
 }
-std::string Board::toString(const CardsInfo& cards, std::vector<Board> boards, std::vector<bool> players) {
+auto Board::toString(const CardsInfo& cards, const std::vector<Board>& boards, std::vector<bool> players) -> std::string {
 	std::vector<char> turnIndicators(players.size());
 	for (int i = 0; i < players.size(); i++)
 		turnIndicators[i] = players[i] ? '0' : 'X';
 	return toString(cards, boards, turnIndicators);
 }
-std::string Board::toString(const CardsInfo& cards, std::vector<Board> boards) {
+auto Board::toString(const CardsInfo& cards, const std::vector<Board>& boards) -> std::string {
 	std::vector<char> turnIndicators(boards.size(), ' ');
 	return toString(cards, boards, turnIndicators);
 }
-std::string Board::toString(const CardsInfo& cards, bool player) const {
+auto Board::toString(const CardsInfo& cards, bool player) const -> std::string {
 	return Board::toString(cards, { *this }, std::vector<bool>{ player });
 };
-std::string Board::toString(const CardsInfo& cards) const {
+auto Board::toString(const CardsInfo& cards) const -> std::string {
 	return Board::toString(cards, { *this });
 };
-void Board::print(const CardsInfo& cards) const {
+auto Board::print(const CardsInfo& cards) const -> void {
 	auto str = toString(cards);
 	std::cout << str << std::flush;
 };
-void Board::print(const CardsInfo& cards, bool player) const {
+auto Board::print(const CardsInfo& cards, bool player) const -> void {
 	auto str = toString(cards, player);
 	std::cout << str << std::flush;
 };

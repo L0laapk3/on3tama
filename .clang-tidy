@@ -3,6 +3,8 @@ Checks: >
   modernize*,
   -modernize-use-designated-initializers,
   performance*,
+  -performance-prefer-single-char-overloads,
+  -performance-faster-string-find,
   bugprone*,
   -bugprone-easily-swappable-parameters,
   clang-diagnostic-*

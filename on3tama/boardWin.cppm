@@ -8,27 +8,27 @@ import :board;
 
 
 template <bool player>
-bool inline Board::isTempleKingInRange(const MoveBoardList& moveList) const {
+inline auto Board::isTempleKingInRange(const MoveBoardList& moveList) const -> bool {
 	// player king can move to temple
 	return (moveList[TEMPLE[player]].flip[!player].cards[0] | moveList[TEMPLE[player]].flip[!player].cards[1]) & k[player];
 }
 
 
 template <bool player>
-bool inline Board::isTempleFree() const {
+inline auto Board::isTempleFree() const -> bool {
 	// no player piece is blocking the temple.
 	return !(p[player] & (1 << TEMPLE[player]));
 }
 
 
 template <bool player>
-bool inline Board::isTempleWinInOne(const MoveBoardList& moveList) const {
+inline auto Board::isTempleWinInOne(const MoveBoardList& moveList) const -> bool {
 	return isTempleKingInRange<player>(moveList) && isTempleFree<player>();
 }
 
 
 template <bool player>
-U32 inline Board::isKingAttackedBy(const MoveBoardList& moveList, U32 bbk, U32 bbp) {
+inline auto Board::isKingAttackedBy(const MoveBoardList& moveList, U32 bbk, U32 bbp) -> U32 {
 	U32 pk = std::countr_zero(bbk);
 	return (moveList[pk].flip[!player].cards[0] | moveList[pk].flip[!player].cards[1]) & bbp;
 }
@@ -36,19 +36,19 @@ U32 inline Board::isKingAttackedBy(const MoveBoardList& moveList, U32 bbk, U32 b
 // is !player king safe?
 // is player attacking !players king?
 template <bool player>
-U32 inline Board::isKingAttacked(const MoveBoardList& moveList, U32 bbk) const {
+inline auto Board::isKingAttacked(const MoveBoardList& moveList, U32 bbk) const -> U32 {
 	return isKingAttackedBy<player>(moveList, bbk, p[player]);
 }
 
 
 
 template <bool player>
-U32 inline Board::isTakeWinInOne(const MoveBoardList& moveList) const {
+inline auto Board::isTakeWinInOne(const MoveBoardList& moveList) const -> U32 {
 	return isKingAttacked<player>(moveList, k[!player]);
 }
 
 template <bool player>
-bool inline Board::isWinInOne(const MoveBoardList& moveList) const {
+inline auto Board::isWinInOne(const MoveBoardList& moveList) const -> bool {
 	if (isTempleWinInOne<player>(moveList))
 		return true;
 	return isTakeWinInOne<player>(moveList);
@@ -57,7 +57,7 @@ bool inline Board::isWinInOne(const MoveBoardList& moveList) const {
 
 
 template <bool player>
-void inline Board::doWinInOne(const MoveBoardList& moveList) {
+inline auto Board::doWinInOne(const MoveBoardList& moveList) -> void {
 	assert(isWinInOne<player>(moveList));
 
 	bool secondCard;

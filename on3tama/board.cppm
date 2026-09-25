@@ -10,7 +10,7 @@ export constexpr auto MAX_MOVES = 2 * 5 * 4; // 2 card choices, 5 piece choices,
 
 export struct Game;
 export struct RootResult;
-export struct Board {
+export struct 	Board {
     std::array<U32, 2> p;
     std::array<U32, 2> k;
 	U8 cardI;
@@ -21,43 +21,43 @@ export struct Board {
 
 
 	template<bool player, bool root = false, bool quiescence = false>
-	std::conditional_t<root, RootResult, Score> search(Game& game, Score alpha, Score beta, Depth depthLeft);
+	auto search(Game& game, Score alpha, Score beta, Depth depthLeft) -> std::conditional_t<root, RootResult, Score>;
 
 
 	static constexpr std::array<U32, 2> TEMPLE = { 22, 2 };
 
 	template <bool player>
-	static U32 isKingAttackedBy(const MoveBoardList& moveList, U32 bbk, U32 bbp);
+	static auto isKingAttackedBy(const MoveBoardList& moveList, U32 bbk, U32 bbp) -> U32;
 	template <bool player>
-	U32 isKingAttacked(const MoveBoardList& moveList, U32 bbk) const;
+	auto isKingAttacked(const MoveBoardList& moveList, U32 bbk) const -> U32;
 	template <bool player>
-	bool isTempleKingInRange(const MoveBoardList& moveList) const;
+	auto isTempleKingInRange(const MoveBoardList& moveList) const -> bool;
 	template <bool player>
-	bool isTempleFree() const;
+	auto isTempleFree() const -> bool;
 
 	template <bool player>
-	bool isTempleWinInOne(const MoveBoardList& moveList) const;
+	auto isTempleWinInOne(const MoveBoardList& moveList) const -> bool;
 	template <bool player>
-	U32 isTakeWinInOne(const MoveBoardList& moveList) const;
+	auto isTakeWinInOne(const MoveBoardList& moveList) const -> U32;
 	template <bool player>
-	bool isWinInOne(const MoveBoardList& moveList) const;
+	auto isWinInOne(const MoveBoardList& moveList) const -> bool;
 
 	template <bool player>
-	void doWinInOne(const MoveBoardList& moveList);
+	auto doWinInOne(const MoveBoardList& moveList) -> void;
 
 
 private:
-	static std::string toString(const CardsInfo& cards, std::vector<Board> boards, std::vector<char> turnIndicators);
+	static auto toString(const CardsInfo& cards, const std::vector<Board>& boards, std::vector<char> turnIndicators) -> std::string;
 public:
-	static std::string toString(const CardsInfo& cards, std::vector<Board> boards, std::vector<bool> players);
-	static std::string toString(const CardsInfo& cards, std::vector<Board> boards);
-	std::string toString(const CardsInfo& cards, bool player) const;
-	std::string toString(const CardsInfo& cards) const;
-	void print(const CardsInfo& cards) const;
-	void print(const CardsInfo& cards, bool player) const;
-	Board invert(bool player) const;
-	void checkValid(const CardsInfo& cards, bool player, bool isWon = false) const;
-	void assertValid(const CardsInfo& cards, bool player, bool isWon = false) const;
+	static auto toString(const CardsInfo& cards, const std::vector<Board>& boards, std::vector<bool> players) -> std::string;
+	static auto toString(const CardsInfo& cards, const std::vector<Board>& boards) -> std::string;
+	auto toString(const CardsInfo& cards, bool player) const -> std::string;
+	auto toString(const CardsInfo& cards) const -> std::string;
+	auto print(const CardsInfo& cards) const -> void;
+	auto print(const CardsInfo& cards, bool player) const -> void;
+	auto invert(bool player) const -> Board;
+	auto checkValid(const CardsInfo& cards, bool player, bool isWon = false) const -> void;
+	auto assertValid(const CardsInfo& cards, bool player, bool isWon = false) const -> void;
 
 };
 

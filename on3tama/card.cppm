@@ -217,7 +217,7 @@ export struct CardsInfo {
 	MoveBoardSet moveBoards;
 	CardSet cards;
 
-	constexpr static CardsInfo create(CardSet cards) {
+	constexpr static auto create(CardSet cards) -> CardsInfo {
 		return {
 			generateMoveBoardSet(cards),
 			cards
@@ -227,4 +227,4 @@ export struct CardsInfo {
 
 
 
-void print(const MoveBoard& moves);
+auto print(const MoveBoard& moves) -> void;
