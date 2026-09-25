@@ -19,8 +19,9 @@ export struct Game {
 public:
 
 	const CardsInfo* cards;
+	Board board;
 
 
 	template <bool player>
-	SearchResult search(const Board& board, U8 depth, U64 alpha, U64 beta);
+	SearchResult search(U8 depth, U64 alpha, U64 beta);
 };

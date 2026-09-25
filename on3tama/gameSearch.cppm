@@ -10,7 +10,7 @@ import :game;
 
 
 template <bool player>
-auto Game::search(const Board& board, U8 depth, U64 alpha, U64 beta) -> SearchResult {
+auto Game::search(U8 depth, U64 alpha, U64 beta) -> SearchResult {
 	SearchResult result;
 
 

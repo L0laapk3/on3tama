@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+# if no config is specified, default to dbg
 if [[ "${1:-}" =~ ^(build|test|run|coverage|cquery|aquery)$ ]] && ! [[ "$*" =~ (--config=|-c[[:space:]]|--compilation_mode=) ]]; then
   set -- "$1" --config=dbg "${@:2}"
 fi

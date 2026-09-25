@@ -1,6 +1,4 @@
-module;
-#include <bit>
-module on3tama:boardWin;
+export module on3tama:boardWin;
 import std;
 import :types;
 import :score;

@@ -19,8 +19,10 @@ export struct Board {
 	template <bool player, typename Callable>
 	auto movegen(const CardsInfo& cards, Callable&& cb) const -> void;
 
+
 	template<bool player, bool root = false, bool quiescence = false>
 	std::conditional_t<root, RootResult, Score> search(Game& game, Score alpha, Score beta, Depth depthLeft);
+
 
 	static constexpr std::array<U32, 2> TEMPLE = { 22, 2 };
 
@@ -42,6 +44,20 @@ export struct Board {
 
 	template <bool player>
 	void doWinInOne(const MoveBoardList& moveList);
+
+
+private:
+	static std::string toString(const CardsInfo& cards, std::vector<Board> boards, std::vector<char> turnIndicators);
+public:
+	static std::string toString(const CardsInfo& cards, std::vector<Board> boards, std::vector<bool> players);
+	static std::string toString(const CardsInfo& cards, std::vector<Board> boards);
+	std::string toString(const CardsInfo& cards, bool player) const;
+	std::string toString(const CardsInfo& cards) const;
+	void print(const CardsInfo& cards) const;
+	void print(const CardsInfo& cards, bool player) const;
+	Board invert(bool player) const;
+	void checkValid(const CardsInfo& cards, bool player, bool isWon = false) const;
+	void assertValid(const CardsInfo& cards, bool player, bool isWon = false) const;
 
 };
 
