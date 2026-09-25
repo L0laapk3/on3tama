@@ -30,6 +30,8 @@ auto Board::search(Game& game, Score alpha, Score beta, Depth depthLeft) -> std:
 			alpha = standing_pat;
 	}
 
+	std::array<Move, 40> moves{};
+
 
 
 	if constexpr (root)

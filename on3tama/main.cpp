@@ -17,7 +17,9 @@ void singleSearch() {
 
 
 auto main() -> int {
-	auto b = STARTING_BOARD;
-
+	if (1) {
+		singleSearch();
+		return 0;
+	}
 	return 0;
 }
