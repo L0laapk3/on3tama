@@ -1,6 +1,6 @@
-export module card;
+export module on3tama:card;
 import std;
-import types;
+import :types;
 
 
 
@@ -168,8 +168,8 @@ using CardSet = std::array<Card, 5>;
 
 struct HalfPositionLocal { std::array<U32, 2> cards; };          // card0 and card1
 struct PositionLocal { std::array<HalfPositionLocal, 2> flip; }; // forwards and reverses
-using MoveBoardList = std::array<PositionLocal, 25>;              // 25 position indices
-using MoveBoardSet = std::array<MoveBoardList, 10>;               // 5*4/2 half card combinations
+export using MoveBoardList = std::array<PositionLocal, 25>;              // 25 position indices
+export using MoveBoardSet = std::array<MoveBoardList, 10>;               // 5*4/2 half card combinations
 
 
 constexpr auto generateMoveBoardSet(const CardSet& cards) {

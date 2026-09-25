@@ -1,0 +1,11 @@
+export module on3tama;
+export import :types;
+export import :score;
+export import :card;
+export import :xoshiro256;
+export import :board;
+export import :boardMove;
+export import :boardWin;
+export import :boardSearch;
+export import :game;
+export import :gameSearch;

@@ -37,6 +37,7 @@ build:rel_symbols --config=dbg --config=opt
 build:rel_symbols --strip=never
 build:rel_symbols --copt=-g
 
+build:dbg --copt=-fdebug-prefix-map=/proc/self/cwd=. # idk man
 build:dbg --copt=-g --copt=-O0
 build:dbg --strip=never
 build:dbg --copt=-fno-omit-frame-pointer

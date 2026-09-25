@@ -1,4 +1,4 @@
-import board;
+import on3tama;
 import std;
 
 
