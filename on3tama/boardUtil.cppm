@@ -6,6 +6,14 @@ import :types;
 import :board;
 
 
+
+auto Board::create(bool player, std::array<U32, 2> p, std::array<U32, 2> k) -> Board {
+	Board board{ p, k };
+	// board.recalculateHash(player);
+	return board;
+}
+
+
 auto Board::checkValid(const CardsInfo& cards, bool player, bool isWon) const -> void {
 	auto test = [&](bool result) {
 		if (!result) {

@@ -225,6 +225,8 @@ export struct CardsInfo {
 	};
 };
 
+export constexpr CardsInfo CARDS_PERFT = CardsInfo::create({ BOAR, OX, ELEPHANT, HORSE, CRAB });
+
 
 
 auto print(const MoveBoard& moves) -> void;

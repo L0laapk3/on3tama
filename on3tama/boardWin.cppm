@@ -1,3 +1,5 @@
+module;
+#include <cassert>
 export module on3tama:boardWin;
 import std;
 import :types;

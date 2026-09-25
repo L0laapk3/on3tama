@@ -46,6 +46,7 @@ export struct 	Board {
 	auto doWinInOne(const MoveBoardList& moveList) -> void;
 
 
+	static auto create(bool player = 0, std::array<U32, 2> p = { 0b00000'00000'00000'00000'11111, 0b11111'00000'00000'00000'00000 }, std::array<U32, 2> k = { 0b00000'00000'00000'00000'00100, 0b00100'00000'00000'00000'00000 }) -> Board;
 private:
 	static auto toString(const CardsInfo& cards, const std::vector<Board>& boards, std::vector<char> turnIndicators) -> std::string;
 public:
