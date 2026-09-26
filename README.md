@@ -1,5 +1,5 @@
 **installing bazelisk & buildifier (lazy)**
-`pnpm i -g @bazel/bazelisk @bazel/buildifier-linux_x64`
+`pnpm i -g @bazel/bazelisk @bazel/buildifier-linux_x64` `pnpm runtime set node lts -g`
 
 # Run
 `bazel run //on3tama`
